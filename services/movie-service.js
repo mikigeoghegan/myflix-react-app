@@ -9,8 +9,7 @@ function getTopRated() {
 }
 
 function getByGenre() {
-  return movieService.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-
+  return movieService.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
 }
 
 //19404
