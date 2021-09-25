@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 function Carosel({movies}){
-    const baseLink = 'https://image.tmdb.org/t/p/original/'
+    const baseLink = 'https://image.tmdb.org/t/p/original'
     return (
         <div className = 'carosel-container'>
             {movies.results.map((singleMovie) => {
@@ -14,10 +14,9 @@ function Carosel({movies}){
                         </div>
                     </Link>
                     <div className="movie-text">
-                    <Link to={`/${singleMovie._id}`}>
-                        <h2>{singleMovie.original_title}</h2>
-                    </Link>
-                        <p>{singleMovie.overview}</p>        
+                    <Link to={`/${singleMovie.id}`}>
+                        <h2>{singleMovie.title}</h2>
+                    </Link>     
                     </div>
                 </div>
         );
