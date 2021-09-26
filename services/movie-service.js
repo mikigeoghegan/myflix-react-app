@@ -6,7 +6,7 @@ const movieService = axios.create({
 });
 
 async function getTopRated() {
-  const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=885ac395bf7a9b3e4962aa8a1044131c&language=en-US&page=1`)
+  const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=process.env.REACT_APP_API_KEY&language=en-US&page=1`)
   
   //const url = `/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   //console.log(url)
@@ -34,7 +34,7 @@ function getByGenre() {
 
 async function singleMovie(movieId){
   console.log(movieId)
-  const url = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=885ac395bf7a9b3e4962aa8a1044131c&language=en-US"
+  const url = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=process.env.REACT_APP_API_KEY&language=en-US"
   const response = await axios.get(url)
   return response
 }
