@@ -1,31 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Navbar from './NavBar';
-import * as movieService from '../../services/movie-service';
+import { singleMovie } from '../../services/movie-service';
 
 
 const startingState = {image_URL: null, title: null, overview: null, genres: [],  }
 
 function SingleMovie(props){
-    const {movieId} = props.match.params
+    const {movieId} = useParams('movieId')
     const [movieState, setMovieState]= useState(startingState)
+    const [imgURL, setImgURL] = useState('')
+    const [genre, setGenre] = useState([])
 
     useEffect(()=>{
-        movieService.getByGenre()
+        singleMovie(movieId)
         .then(res =>{
             console.log(res)
-            const movie = res.genres.name
-            setMovieState(movie)
+            setMovieState(res.data)
+            setImgURL('https://image.tmdb.org/t/p/original' + res.data.backdrop_path)
+            setGenre(res.data.genres[0])
+
         })
-    }, [movieId])
+    }, [])
 
     return(
     <div>
-        <Navbar />
-        <img src={movieState.image_URL} alt="Movie Img" />
-        <h4>{movieState.title}</h4>
-        <p>{movieState.overview}</p>
-        <p>{movieState.genres[0]}</p>
+        {movieState? 
+         (<div><img src={imgURL} alt="Movie Img" />
+         <h4>{movieState.title}</h4>
+         <p>{movieState.overview}</p>
+         <p>{genre.name}</p>
+{/*          {movieState.genres?
+        <p>{(movieState.genres[0]).name}</p>: null} */}
+         </div>)
+        : null
+        
+    }
+        
         <Link to={'/movies'}>Back to all Movies</Link>
     </div>
     )

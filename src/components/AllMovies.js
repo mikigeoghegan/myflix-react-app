@@ -1,25 +1,23 @@
 
 import React, { useState, useEffect } from 'react';
-import * as movieService from '../../services/movie-service';
-import NavBar from './NavBar';
+import {getTopRated} from '../../services/movie-service';
 import Carosel from './Carosel'
 
 function TopRated() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    movieService
-      .getTopRated()
-      .then((movies) => {
-        setMovies(movies);
+      getTopRated()
+      .then((response) => {
+        setMovies(response.data);
+        console.log(movies)
       })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div>
-      <NavBar />
-      <Carosel movies = {movies}/>
+      {movies.results?(<Carosel movies = {movies.results}/>): 'no movies exist'}
     </div>
   );
 }

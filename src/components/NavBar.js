@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
-function Header() {
+const NavBar = () => {
   return (
       <header className="navbar">
-        <Link to="/"><i className="home-btn">hello</i></Link>
+        <NavLink to="/"><i className="home-btn">hello</i></NavLink>
       </header>
   )
 }
 
-export default Header;
+export default NavBar;

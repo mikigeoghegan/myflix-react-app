@@ -1,0 +1,15 @@
+.movie-container {
+    display: flex;
+
+}
+
+.movie-item {
+    max-width: 200px;
+    margin-right: 20px;
+    max-height: 150px;
+}
+
+.movie-image{
+    object-fit: contain;
+    width: 100%;
+}
