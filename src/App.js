@@ -9,9 +9,9 @@ import * as movieService from './../services/movie-service'
 function App() {
   return (
     <div className="app">
-      <h1>My React App</h1>
       <BrowserRouter>
       <NavBar />
+      <h1>Myflix </h1>
       <Switch>
         <Route path="/" component={TopRated} exact />
         <Route exact path='/:movieId' component ={SingleMovie}/> 

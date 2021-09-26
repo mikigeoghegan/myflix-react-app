@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import './Carosel.scss'
 
-function Carosel({topMovies}, {latestMovies}){
+function Carosel({topMovies}, /* {latestMovies}, {popularMovies} */){
     useEffect(() => {
         console.log('these are the', topMovies)
-        console.log('these are the latest', latestMovies)
+/*         console.log('these are the latest', latestMovies)
+        console.log('these are the popular', popularMovies) */
     }, [])
     const baseLink = 'https://image.tmdb.org/t/p/original'
     return (
@@ -29,7 +30,7 @@ function Carosel({topMovies}, {latestMovies}){
             );
         })}
         </div>
-        <div className = 'movie-container'>
+{/*         <div className = 'movie-container'>
              {latestMovies.map((singleMovie) => {
                 const img_URL = baseLink + singleMovie.backdrop_path
                 return (
@@ -49,7 +50,7 @@ function Carosel({topMovies}, {latestMovies}){
       })}
       </div>
       <div className = 'movie-container'>
-             {latestMovies.map((singleMovie) => {
+             {popularMovies.map((singleMovie) => {
                 const img_URL = baseLink + singleMovie.backdrop_path
                 return (
                 <div key={singleMovie.id} className="movie-item">
@@ -66,7 +67,7 @@ function Carosel({topMovies}, {latestMovies}){
             </div>
         );
       })}
-      </div>
+      </div> */}
 
 
     </div>
