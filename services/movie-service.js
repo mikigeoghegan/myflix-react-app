@@ -31,14 +31,15 @@ function getByGenre() {
   return movieService.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
 }
 
-async function getLatest() {
-  const response = await movieService.get(`/movie/latest?api_key=885ac395bf7a9b3e4962aa8a1044131c&language=en-US`)
+async function getUpcoming() {
+  const response = await movieService.get(`/movie/upcoming?api_key=885ac395bf7a9b3e4962aa8a1044131c&language=en-US&page=1`)
   
     return response
 }
 
 async function getPopular() {
-  return movieService.get(`/movie/popular?api_key=885ac395bf7a9b3e4962aa8a1044131c&language=en-US&page=1 `)
+  const response = movieService.get(`/movie/popular?api_key=885ac395bf7a9b3e4962aa8a1044131c&language=en-US&page=1 `)
+  return response
 }
 
 
@@ -51,4 +52,4 @@ async function singleMovie(movieId){
   return response
 }
 
-export { movieService, getTopRated, getByGenre, getLatest, singleMovie, getPopular };
+export { movieService, getTopRated, getByGenre, getUpcoming, singleMovie, getPopular };

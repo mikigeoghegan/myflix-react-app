@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
-import TopRated from './components/AllMovies';
+import getAllMovies from './components/AllMovies';
 import SingleMovie from './components/SingleMovie'
 import NavBar from './components/NavBar'
-import * as movieService from './../services/movie-service'
+import Wishlist from './components/Wishlist';
 
 
 function App() {
@@ -13,8 +13,9 @@ function App() {
       <NavBar />
       <h1>Myflix </h1>
       <Switch>
-        <Route path="/" component={TopRated} exact />
-        <Route exact path='/:movieId' component ={SingleMovie}/> 
+        <Route path="/" component={getAllMovies} exact />
+        <Route exact path='/:movieId' component ={SingleMovie}/>
+        <Route exact path= '/wishlist' component ={Wishlist} />
       </Switch>
       </BrowserRouter>
     </div>

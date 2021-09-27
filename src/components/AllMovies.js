@@ -1,42 +1,22 @@
 
 import React, { useState, useEffect } from 'react';
-import {getLatest, getPopular, getTopRated} from '../../services/movie-service';
+import {getUpcoming, getPopular, getTopRated} from '../../services/movie-service';
 import Carosel from './Carosel'
-
-/* function TopRated() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-      getTopRated()
-      .then((response) => {
-        setMovies(response.data);
-        console.log(movies)
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  return (
-    <div>
-      {movies.results?(<Carosel movies = {movies.results}/>): 'no movies exist'}
-    </div>
-  );
-} */
+import './AllMovies.scss'
 
 function getAllMovies() {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [lastestMovies, setLatestMovies] = useState([])
+  const [upcomingMovies, setUpcomingMovies] = useState([])
   const [popularMovies, setPopularMovies] = useState([])
 
   useEffect(() => {
       getTopRated()
       .then((response) => {
         setTopRatedMovies(response.data);
-        console.log('these are the top rated', topRatedMovies)
       })
-      getLatest()
+      getUpcoming()
       .then((response) => {
-        setLatestMovies(response.data)
-        console.log('this is the data for latest', lastestMovies)
+        setUpcomingMovies(response.data)
       })
       getPopular()
       .then((response) => {
@@ -47,7 +27,12 @@ function getAllMovies() {
 
   return ( 
     <div>
-      {topRatedMovies.results?(<Carosel topMovies = {topRatedMovies.results} lastestMovies = {lastestMovies.results} popularMovies = {popularMovies.results} />): 'no movies exist'}
+        
+        {topRatedMovies.results?(<Carosel movies = {topRatedMovies.results} title = 'Top Rated' />): 'no movies exist'}
+      
+        {upcomingMovies.results?(<Carosel movies = {upcomingMovies.results} title = 'Upcoming' />): 'no movies exist'}
+     
+        {popularMovies.results?(<Carosel movies = {popularMovies.results} title = 'Popular' />): 'no movies exist'}
     </div>
   );
 }

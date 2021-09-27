@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { singleMovie } from '../../services/movie-service';
+import './SingleMovie.scss'
 
 
 const startingState = {image_URL: null, title: null, overview: null, genres: [],  }
@@ -25,18 +26,16 @@ function SingleMovie(props){
     return(
     <div>
         {movieState? 
-         (<div><img src={imgURL} alt="Movie Img" />
+         (<div><img src={imgURL} className = 'main-img' alt="Movie Img" />
          <h4>{movieState.title}</h4>
          <p>{movieState.overview}</p>
          <p>{genre.name}</p>
-{/*          {movieState.genres?
-        <p>{(movieState.genres[0]).name}</p>: null} */}
          </div>)
         : null
         
     }
         
-        <Link to={'/movies'}>Back to all Movies</Link>
+        <Link to={'/'}>Back to all Movies</Link>
     </div>
     )
 }
