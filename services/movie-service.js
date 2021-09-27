@@ -35,9 +35,14 @@ async function singleMovie(movieId){
   return response
 }
 
-async function addFavourite(account_id){
-  const response = await movieService.post("/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c")
-  return response
-}
+/* async function addFavourite(movie){
+  const response = movieService.post("/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c", {media_type: 'movie', media_id: movieId, favorite: true})
+.then(res => {
+    setFavourites(res)
+})
+.catch(err => console.log(err))
+} 
+ */
 
-export { movieService, getTopRated, getByGenre, getUpcoming, singleMovie, getPopular, addFavourite };
+
+export { movieService, getTopRated, getByGenre, getUpcoming, singleMovie, getPopular /* addFavourite  */};

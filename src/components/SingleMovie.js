@@ -1,17 +1,20 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { singleMovie } from '../../services/movie-service';
+import { singleMovie/* , addFavourite */ } from '../../services/movie-service';
 import './SingleMovie.scss'
 
 
 const startingState = {image_URL: null, title: null, overview: null, genres: [],  }
 
-function SingleMovie(props){
+
+function SingleMovie(){
     const {movieId} = useParams('movieId')
     const [movieState, setMovieState]= useState(startingState)
     const [imgURL, setImgURL] = useState('')
     const [genre, setGenre] = useState([])
     const [popularity, setPopularity] = useState(0)
+    const [favourites, setFavourites] = useState([])
 
     useEffect(()=>{
         singleMovie(movieId)
@@ -24,6 +27,19 @@ function SingleMovie(props){
 
         })
     }, [])
+
+/*     const handleFavourite = (movieId) => {
+        axios.post("https://api.themoviedb.org/3/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c", {media_type: 'movie', media_id: movieId, favorite: true})
+          .then(res => {
+              setFavourites(res)
+          })
+          .catch(err => console.log(err))
+          
+
+
+        addFavourite(movieId)
+        console.log('this is the id', movieId)
+    } */
 
     return(
     <div className={popularity >1900? 'popular': movieState.release_date >'2021-06-11'? 'upcoming' : movieState.vote_average >8.5? 'top-rated': null}>
@@ -38,9 +54,9 @@ function SingleMovie(props){
          </div>)
         : null  
     }
-        <Link to={'/wishlist'}>
-            <i class="far fa-heart"></i>
-        </Link>    
+        <button /* onClick={handleFavourite()} */>
+            <i className="far fa-heart"></i>
+        </button>    
         
         <Link to={'/'}>Back to all Movies</Link>
     </div>
