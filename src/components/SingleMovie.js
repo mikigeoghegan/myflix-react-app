@@ -5,7 +5,7 @@ import { singleMovie/* , addFavourite */ } from '../../services/movie-service';
 import './SingleMovie.scss'
 
 
-const startingState = {image_URL: null, title: null, overview: null, genres: [],  }
+const startingState = {image_URL: null, title: null, overview: null, genres: [] }
 
 
 function SingleMovie(){
@@ -42,23 +42,30 @@ function SingleMovie(){
     } */
 
     return(
-    <div className={popularity >1900? 'popular': movieState.release_date >'2021-06-11'? 'upcoming' : movieState.vote_average >8.5? 'top-rated': null}>
-        {movieState? 
-         (<div><img src={imgURL} className = 'main-img' alt="Movie Img" />
-         <h4>{movieState.title}</h4>
-         <p>{popularity}</p>
-         <p>{movieState.release_date}</p>
-         <p>{movieState.vote_average}</p>
-         <p>{movieState.overview}</p>
-         <p>{genre.name}</p>
-         </div>)
-        : null  
-    }
-        <button /* onClick={handleFavourite()} */>
-            <i className="far fa-heart"></i>
-        </button>    
+    <div className = 'single-movie-all'>
+        <div className={popularity >1400? 'popular': movieState.release_date >'2021-06-11'? 'upcoming' : movieState.vote_average >= 8.5? 'top-rated': null}>
+            <Link to = '/' className ='title'><h1>MYFLIX</h1> </Link>
+            {movieState? 
+            (<div >
+                <h4 className ='single-title'>{movieState.title}</h4>
+                <div className ='movie-details'> 
+                    <div>
+                        <img src={imgURL} className = 'main-img' alt="Movie Img" />
+                    </div>
+                    <div className = 'movie-info'>
+                        <p className = 'movie-overview'>{movieState.overview}</p>
+                        <button /* onClick={handleFavourite()} */><i className="fas fa-heart"></i></button> 
+                    </div>
+                </div>
+                <div className ='additional-info'>
+                    <p>Genre: {genre.name}</p>
+                    <p>Runtime: {movieState.runtime} minutes</p>
+                </div>
+            </div>)
+            : null  
+        }   
         
-        <Link to={'/'}>Back to all Movies</Link>
+        </div>
     </div>
     )
 }

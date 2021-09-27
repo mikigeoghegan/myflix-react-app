@@ -10,18 +10,24 @@
 .movie-container {
     display: flex;
     overflow: hidden;
-    width: 90vw;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    height: 100%;
 }
 
 .movie-item {
-    max-width: 500px;
+    max-width: 300vw;
     margin-right: 20px;
-    max-height: 300px;
 }
 
 .movie-image{
     object-fit: contain;
-    width: 300px;
+    width: 200px;
+}
+
+.movie-image:hover{
+    width: 400px;
 }
 
 .arrow-container {
@@ -42,6 +48,8 @@
     text-align: center;
     text-decoration: none;
     color: white;
-    
+}
 
+.movie-title a:hover{
+    color: #E50914;
 }
