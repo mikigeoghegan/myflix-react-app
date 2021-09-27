@@ -56,7 +56,7 @@ function Carosel({movies, title}){
                                 <img src={img_URL} alt="Movie-img" className = 'movie-image' />
                             </div>
                         </Link>
-                        <div className="movie-title">
+                    <div className="movie-title">
                         <Link to={`/${singleMovie.id}`}>
                             <p>{singleMovie.title}</p>
                         </Link>     

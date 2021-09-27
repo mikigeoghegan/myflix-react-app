@@ -4,6 +4,7 @@ import getAllMovies from './components/AllMovies';
 import SingleMovie from './components/SingleMovie'
 import NavBar from './components/NavBar'
 import Wishlist from './components/Wishlist';
+import './App.scss'
 
 
 function App() {

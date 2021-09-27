@@ -36,9 +36,11 @@ function SingleMovie(props){
          <p>{movieState.overview}</p>
          <p>{genre.name}</p>
          </div>)
-        : null
-        
+        : null  
     }
+        <Link to={'/wishlist'}>
+            <i class="far fa-heart"></i>
+        </Link>    
         
         <Link to={'/'}>Back to all Movies</Link>
     </div>

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-
-
 const movieService = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
 });
@@ -37,4 +35,9 @@ async function singleMovie(movieId){
   return response
 }
 
-export { movieService, getTopRated, getByGenre, getUpcoming, singleMovie, getPopular };
+async function addFavourite(account_id){
+  const response = await movieService.post("/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c")
+  return response
+}
+
+export { movieService, getTopRated, getByGenre, getUpcoming, singleMovie, getPopular, addFavourite };

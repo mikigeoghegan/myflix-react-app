@@ -26,7 +26,7 @@ function getAllMovies() {
   }, []);
 
   return ( 
-    <div>
+    <div className ='everything'>
         
         {topRatedMovies.results?(<Carosel movies = {topRatedMovies.results} title = 'Top Rated' />): 'Loading Top Rated Movies'}
       
