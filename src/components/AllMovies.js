@@ -28,11 +28,11 @@ function getAllMovies() {
   return ( 
     <div>
         
-        {topRatedMovies.results?(<Carosel movies = {topRatedMovies.results} title = 'Top Rated' />): 'no movies exist'}
+        {topRatedMovies.results?(<Carosel movies = {topRatedMovies.results} title = 'Top Rated' />): 'Loading Top Rated Movies'}
       
-        {upcomingMovies.results?(<Carosel movies = {upcomingMovies.results} title = 'Upcoming' />): 'no movies exist'}
+        {upcomingMovies.results?(<Carosel movies = {upcomingMovies.results} title = 'Upcoming' />): 'Loading Upcoming Movies'}
      
-        {popularMovies.results?(<Carosel movies = {popularMovies.results} title = 'Popular' />): 'no movies exist'}
+        {popularMovies.results?(<Carosel movies = {popularMovies.results} title = 'Popular' />): 'Loading Most Popular Movies'}
     </div>
   );
 }
