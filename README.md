@@ -13,4 +13,5 @@
 ## Screenshots
 
 Home Page:
-'./src/images/homess.png'
+![image](https://user-images.githubusercontent.com/83708369/135143127-3e134132-1819-4e3a-8ce8-0b27e382a492.png)
+
