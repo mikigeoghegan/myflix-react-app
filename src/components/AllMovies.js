@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import {getUpcoming, getPopular, getTopRated} from '../../services/movie-service';
 import { Link } from 'react-router-dom';
-import Carosel from './Carosel'
+import Carousel from './Carousel'
 import './AllMovies.scss'
 
 function getAllMovies(props) {
@@ -30,11 +30,11 @@ function getAllMovies(props) {
     <div className ='everything'>
       <h1 className ='title'>MYFLIX</h1> 
         
-      {topRatedMovies.results?(<Carosel movies = {topRatedMovies.results} title = 'Top Rated' />): 'Loading Top Rated Movies'}
+      {topRatedMovies.results?(<Carousel movies = {topRatedMovies.results} title = 'Top Rated' />): 'Loading Top Rated Movies'}
       
-      {upcomingMovies.results?(<Carosel movies = {upcomingMovies.results} title = 'Upcoming' />): 'Loading Upcoming Movies'}
+      {upcomingMovies.results?(<Carousel movies = {upcomingMovies.results} title = 'Upcoming' />): 'Loading Upcoming Movies'}
      
-      {popularMovies.results?(<Carosel movies = {popularMovies.results} title = 'Popular' />): 'Loading Most Popular Movies'}
+      {popularMovies.results?(<Carousel movies = {popularMovies.results} title = 'Popular' />): 'Loading Most Popular Movies'}
     </div>
   );
 }

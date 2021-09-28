@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
-import './Carosel.scss'
+import './Carousel.scss'
 
 
-function Carosel({movies, title}){
+function Carousel({movies, title}){
     const [scrollAmount, setScrollAmount] = useState(0)
 
     const moveLeft = (e) => {
-        let carosel = e.target.parentNode.parentNode.childNodes[1]
+        let carousel = e.target.parentNode.parentNode.childNodes[1]
         if (scrollAmount < 0){
             setScrollAmount(0)
         }
         setScrollAmount(scrollAmount - 400)
-        carosel.scrollTo({
+        carousel.scrollTo({
             top: 0,
             left: scrollAmount,
             behaviour: 'smooth'
@@ -20,12 +20,12 @@ function Carosel({movies, title}){
     }
 
     const moveRight = (e) => {
-        let carosel = e.target.parentNode.parentNode.childNodes[1]
-        if (scrollAmount > carosel.scrollWidth){
-            setScrollAmount(carosel.scrollWidth)
+        let carousel = e.target.parentNode.parentNode.childNodes[1]
+        if (scrollAmount > carousel.scrollWidth){
+            setScrollAmount(carousel.scrollWidth)
         }
         setScrollAmount(scrollAmount + 400)
-        carosel.scrollTo({
+        carousel.scrollTo({
             top: 0,
             left: scrollAmount,
             behaviour: 'smooth'
@@ -68,4 +68,4 @@ function Carosel({movies, title}){
     )
 }
 
-export default Carosel;
+export default Carousel;
