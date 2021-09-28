@@ -5,13 +5,9 @@ import './Carosel.scss'
 
 function Carosel({movies, title}){
     const [scrollAmount, setScrollAmount] = useState(0)
-    useEffect(() => {
-        console.log(title)
-    }, [])
 
     const moveLeft = (e) => {
         let carosel = e.target.parentNode.parentNode.childNodes[1]
-        console.log(carosel)
         if (scrollAmount < 0){
             setScrollAmount(0)
         }
@@ -25,7 +21,6 @@ function Carosel({movies, title}){
 
     const moveRight = (e) => {
         let carosel = e.target.parentNode.parentNode.childNodes[1]
-        console.log(carosel)
         if (scrollAmount > carosel.scrollWidth){
             setScrollAmount(carosel.scrollWidth)
         }

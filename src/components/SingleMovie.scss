@@ -1,26 +1,23 @@
-.single-movie-all {
-
-
-}
 
 .main-img {
-    width: 700px;
+    width: 40%;
     padding: 0 0 0 5em;
-    margin-top: 0;
+    margin: 0;
+
 }
 
 .movie-details {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+    margin-top: 0;
+    max-height: 20%;
 }
 
 .movie-info {
-    margin: 5em;
+    margin: 30px 70px;
     text-align: center;
-    max-width: 90vw;
-    padding: 0 5em 0 0;
+    max-width: 95vw;
 }
 
 .single-title {
@@ -34,10 +31,10 @@
 
 }
 
-
 .top-rated {
     color: #FFFF00;
     font-family: 'Lora', serif;
+    width: 100%
 }
 
 .upcoming {
@@ -50,5 +47,15 @@
     color: #FF00FF;
     font-family: 'Nunito', sans-serif;
 }
+
+@media only screen and (max-width: 800px) {
+    [class*="movie-details"] {
+      display: flex;
+      flex-direction: column;
+    }
+    [class*="main-img"] {
+        padding-left: 0;
+    }
+  }
 
 

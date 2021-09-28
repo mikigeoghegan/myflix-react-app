@@ -1,0 +1,22 @@
+.favourite-movies {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5em;
+    align-items: center;
+}
+
+.movie-title {
+    margin-left: 3em;
+}
+
+
+@media only screen and (max-width: 800px) {
+    [class*="favourite-movies"] {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0;
+    }
+    [class*="movie-title"] {
+        margin-left: 0;
+    }
+  }
