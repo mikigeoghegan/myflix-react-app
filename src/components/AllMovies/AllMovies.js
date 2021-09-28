@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import {getUpcoming, getPopular, getTopRated} from '../../services/movie-service';
+import {getUpcoming, getPopular, getTopRated} from '../../../services/movie-service';
 import { Link } from 'react-router-dom';
-import Carousel from './Carousel'
+import Carousel from '../Carousel/Carousel'
 import './AllMovies.scss'
 
 function getAllMovies(props) {

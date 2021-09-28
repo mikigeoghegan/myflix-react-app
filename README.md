@@ -6,7 +6,7 @@
 
 ## Links
 
-- Repo: https://github.com/Miki-Geoghegan/mytheresa-react-app "mytheresa-react-app Repo"
+- Repo: https://github.com/Miki-Geoghegan/mytheresa-react-app "mytheresa-react-app"
 
 - API: https://developers.themoviedb.org/3/getting-started/introduction "TheMovieDatabase API"
 

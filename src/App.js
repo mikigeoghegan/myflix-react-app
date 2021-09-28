@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
-import AllMovies from './components/AllMovies';
-import SingleMovie from './components/SingleMovie'
+import AllMovies from './components/AllMovies/AllMovies';
+import SingleMovie from './components/SingleMovie/SingleMovie'
 import './App.scss'
 
 

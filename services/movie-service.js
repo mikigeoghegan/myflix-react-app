@@ -25,7 +25,6 @@ async function getPopular() {
 }
 
 async function singleMovie(movieId){
-  console.log(movieId)
   const url =  `/movie/` + movieId + `?api_key=${apiKey}&language=en-US`
   const response = await movieService.get(url)
   return response
