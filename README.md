@@ -15,3 +15,7 @@
 Home Page:
 ![image](https://user-images.githubusercontent.com/83708369/135143127-3e134132-1819-4e3a-8ce8-0b27e382a492.png)
 
+Movie Details and Liked Movies:
+![image](https://user-images.githubusercontent.com/83708369/135143637-5f2f1d58-bbfd-4684-81fb-74dfad7ce6e8.png)
+
+
