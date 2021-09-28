@@ -2,19 +2,22 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { singleMovie/* , addFavourite */ } from '../../services/movie-service';
+import Favourites from './Favourites';
 import './SingleMovie.scss'
 
 
-const startingState = {image_URL: null, title: null, overview: null, genres: [] }
+const startingMovieState = {image_URL: null, title: null, overview: null, release_date: '', vote_average: 0, runtime: 0, id: 0 }
 
 
-function SingleMovie(){
+function SingleMovie(props){
+    console.log('first props', props);
+    
     const {movieId} = useParams('movieId')
-    const [movieState, setMovieState]= useState(startingState)
+    const [movieState, setMovieState]= useState(startingMovieState)
     const [imgURL, setImgURL] = useState('')
     const [genre, setGenre] = useState([])
     const [popularity, setPopularity] = useState(0)
-    const [favourites, setFavourites] = useState([])
+  
 
     useEffect(()=>{
         singleMovie(movieId)
@@ -24,22 +27,38 @@ function SingleMovie(){
             setImgURL('https://image.tmdb.org/t/p/original' + res.data.backdrop_path)
             setGenre(res.data.genres[0])
             setPopularity(res.data.popularity)
-
         })
     }, [])
 
-/*     const handleFavourite = (movieId) => {
-        axios.post("https://api.themoviedb.org/3/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c", {media_type: 'movie', media_id: movieId, favorite: true})
-          .then(res => {
-              setFavourites(res)
-          })
-          .catch(err => console.log(err))
-          
+/*     function addFavourite(){
+
+        const response = axios.post("https://api.themoviedb.org/3/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c", {media_type: "movie", media_id: 550, favorite: true})
+        console.log(response.data)
+        setFavourites(response.data)
+      } 
+ */
 
 
-        addFavourite(movieId)
-        console.log('this is the id', movieId)
-    } */
+/*     addFavourite(props)
+    .then(res => {
+        console.log('this is the add fave response', res)
+        setFavourites(res.data)
+    }) */
+
+    function addToFavourite(id) {
+            console.log('movie id', id);
+            console.log('props', props);
+            console.log('id', props.match.params.movieId)
+            
+            props.setFavourites(props.favourites.concat(props.match.params.movieId));
+    
+            console.log('props after', props)
+    }
+
+
+
+
+   /*  .catch(err => console.log(err)) */
 
     return(
     <div className = 'single-movie-all'>
@@ -54,13 +73,15 @@ function SingleMovie(){
                     </div>
                     <div className = 'movie-info'>
                         <p className = 'movie-overview'>{movieState.overview}</p>
-                        <button /* onClick={handleFavourite()} */><i className="fas fa-heart"></i></button> 
+                        <button onClick={() => addToFavourite(movieState.id)}><i className="fas fa-heart"></i></button>
                     </div>
                 </div>
                 <div className ='additional-info'>
                     <p>Genre: {genre.name}</p>
                     <p>Runtime: {movieState.runtime} minutes</p>
                 </div>
+                <h2>Favourite Recipes</h2>
+ {/*                 {favourites?(<Favourites favourites = {favourites} title = 'Favourites' />): 'Loading Favourite Movies'}  */}
             </div>)
             : null  
         }   

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Carosel from './Carosel'
 import './AllMovies.scss'
 
-function getAllMovies() {
+function getAllMovies(props) {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([])
   const [popularMovies, setPopularMovies] = useState([])

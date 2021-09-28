@@ -25,9 +25,6 @@ async function getPopular() {
   return response
 }
 
-
-//19404
-
 async function singleMovie(movieId){
   console.log(movieId)
   const url = "/movie/" + movieId + "?api_key=885ac395bf7a9b3e4962aa8a1044131c&language=en-US"
@@ -35,14 +32,25 @@ async function singleMovie(movieId){
   return response
 }
 
-/* async function addFavourite(movie){
-  const response = movieService.post("/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c", {media_type: 'movie', media_id: movieId, favorite: true})
-.then(res => {
-    setFavourites(res)
-})
-.catch(err => console.log(err))
-} 
- */
+/* function addFavourite(movie){
+
+  const response = movieService.post("/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c", {media_type, media_id, favorite: true})
+  return response
+} */
 
 
-export { movieService, getTopRated, getByGenre, getUpcoming, singleMovie, getPopular /* addFavourite  */};
+/*     const handleFavourite = (movieId) => {
+        axios.post("https://api.themoviedb.org/3/account/favourite?api_key=885ac395bf7a9b3e4962aa8a1044131c", {media_type: 'movie', media_id: movieId, favorite: true})
+          .then(res => {
+              setFavourites(res)
+          })
+          .catch(err => console.log(err))
+          
+
+
+        addFavourite(movieId)
+        console.log('this is the id', movieId)
+    } */
+
+
+export { movieService, getTopRated, getByGenre, getUpcoming, singleMovie, getPopular/* , addFavourite */};

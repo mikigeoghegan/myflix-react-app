@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
-import getAllMovies from './components/AllMovies';
+import AllMovies from './components/AllMovies';
 import SingleMovie from './components/SingleMovie'
-import Wishlist from './components/Wishlist';
 import './App.scss'
 
 
+
 function App() {
+  const [favourites, setFavourites] = useState([])
+
+
   return (
     <div className="app">
       <BrowserRouter>
       <Switch>
-        <Route path="/" component={getAllMovies} exact />
-        <Route exact path='/:movieId' component ={SingleMovie}/>
-        <Route exact path= '/wishlist' component ={Wishlist} />
+        <Route exact path='/:movieId' render={props => (
+          <SingleMovie {...props} setFavourites = {setFavourites} favourites = {favourites}/>
+        )}/>
+        <Route path="/" render={props => (
+          <AllMovies {...props} setFavourites = {setFavourites} favourites = {favourites}/>
+        )}/>
+        
       </Switch>
       </BrowserRouter>
     </div>
