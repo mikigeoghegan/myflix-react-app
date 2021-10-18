@@ -33,7 +33,14 @@ function SingleMovie(props){
         if (!props.favourites.includes(title)) props.setFavourites(props.favourites.concat(title));
     }
 
+    function removeFavourite(title) {
+        let index = props.favourites.indexOf(title);
+        let temp = [...props.favourites.slice(0, index), ...props.favourites.slice(index + 1)];
+        props.setFavourites(temp);
+      };
 
+
+    // to do: add toggle button w removeFavouite function to likes
 
     return(
     <div className = 'single-movie-all'>
