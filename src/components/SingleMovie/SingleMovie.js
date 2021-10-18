@@ -33,7 +33,7 @@ function SingleMovie(props){
         if (!props.favourites.includes(title)) props.setFavourites(props.favourites.concat(title));
     }
 
-    function removeFavourite(title) {
+    function removeFavourites(title) {
         let index = props.favourites.indexOf(title);
         let temp = [...props.favourites.slice(0, index), ...props.favourites.slice(index + 1)];
         props.setFavourites(temp);
