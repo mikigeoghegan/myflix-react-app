@@ -1,0 +1,67 @@
+name: New Release Candidate
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: Type of bump
+        required: true
+        type: choice
+        options:
+          - minor
+          - major
+
+jobs:
+  release:
+    name: Bump and Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: 'main'
+          token: ${{ secrets.MIKIGEOGHEGAN_PAT }}
+
+      - name: Set git info
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          yarn global add json@11.0.0
+          wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          chmod a+x /usr/local/bin/yq
+
+
+      - name: Versioning
+        run: |
+          yarn version --${{ inputs.version_type }}
+          package_version=$(json -f ./package.json version)
+          rcversion="${package_version}-rc.1"
+          json -I -f ./package.json -e "this.version='$rcversion'"
+          git add .
+          git commit --amend -m "Bump ${rcversion}"
+          package_version=$(json -f ./package.json version)
+          echo "package_version=$package_version" >> $GITHUB_ENV
+
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          branch: main
+          tags: false
+          github_token: ${{ secrets.MIKIGEOGHEGAN_PAT }}
+
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.MIKIGEOGHEGAN_PAT }}
+          tag_name: ${{ env.package_version }}
+          generate_release_notes: false
+          prerelease: true
